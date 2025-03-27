@@ -16,11 +16,11 @@ export default function TestToken() {
           setData(result.user)
         } else {
           setStatus('Token 验证失败！')
-          setError(result.error)
+          setError(result.error || '未知错误')
         }
       } catch (err) {
         setStatus('Token 验证失败！')
-        setError(err.message)
+        setError(err.message || '请求失败')
       }
     }
 

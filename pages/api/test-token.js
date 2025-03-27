@@ -1,15 +1,18 @@
-import notionAPI from '@/lib/notion/getNotionAPI'
-import BLOG from '@/blog.config'
+import { Client } from '@notionhq/client'
 
 export default async function handler(req, res) {
   try {
+    const notion = new Client({
+      auth: process.env.NOTION_TOKEN_V2
+    })
+
     // 测试获取用户信息
-    const user = await notionAPI.getUser()
+    const response = await notion.users.me()
     
     res.status(200).json({
       success: true,
       message: 'Token 验证成功！',
-      user: user
+      user: response
     })
   } catch (error) {
     console.error('Token 验证失败:', error)
