@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import notionAPI from '@/lib/notion/getNotionAPI'
-import BLOG from '@/blog.config'
 
 export default function TestPage() {
   const [status, setStatus] = useState('正在测试...')
@@ -9,10 +7,16 @@ export default function TestPage() {
   useEffect(() => {
     async function testNotionAPI() {
       try {
-        const pageId = BLOG.NOTION_PAGE_ID.split(',')[0]
-        const page = await notionAPI.getPage(pageId)
-        setStatus('API 连接成功！')
-        console.log('页面数据：', page)
+        const response = await fetch('/api/test-token')
+        const result = await response.json()
+        
+        if (result.success) {
+          setStatus('API 连接成功！')
+          console.log('页面数据：', result.user)
+        } else {
+          setStatus('API 连接失败！')
+          setError(result.error)
+        }
       } catch (err) {
         setStatus('API 连接失败！')
         setError(err.message)
