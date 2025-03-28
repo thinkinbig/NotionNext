@@ -2,7 +2,6 @@
 
 import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 import { useNotionDatabase } from '../../hooks/useNotionDatabase'
 import NotionLayout  from '../../components/layouts/NotionLayout'
 
@@ -12,9 +11,7 @@ const KnowledgeGraph = dynamic(() => import('../../components/KnowledgeGraph'), 
 })
 
 export default function NotionVisualization() {
-  const router = useRouter()
-  const { id } = router.query
-  const { data } = useNotionDatabase(id)
+  const { data } = useNotionDatabase('1bfc87ff7aa48059b644d97dc5dd1923')
 
   // 处理数据为知识图谱格式
   const graphData = useMemo(() => {
