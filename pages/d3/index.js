@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import D3Layout from '../../components/layouts/D3Layout'
+import NotionLayout from '../../components/layouts/NotionLayout'
 
 export default function D3Guide() {
   const [databaseId, setDatabaseId] = useState('')
@@ -14,7 +14,7 @@ export default function D3Guide() {
   }
 
   return (
-    <D3Layout>
+    <NotionLayout>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Notion 知识图谱生成器</h1>
         
@@ -80,6 +80,6 @@ export default function D3Guide() {
           </section>
         </div>
       </div>
-    </D3Layout>
+    </NotionLayout>
   )
 } 
