@@ -106,7 +106,11 @@ const nextConfig = {
       'source.unsplash.com',
       'p1.qhimg.com',
       'webmention.io',
-      'ko-fi.com'
+      'ko-fi.com',
+      'notion.so',
+      'pbs.twimg.com',
+      'abs.twimg.com',
+      's3.us-west-2.amazonaws.com'
     ]
   },
 
@@ -119,7 +123,12 @@ const nextConfig = {
             source: '/feed',
             destination: '/rss/feed.xml',
             permanent: true
-          }
+          },
+          {
+            source: '/g/:id',
+            destination: '/d3/concept-graph?id=:id',
+            permanent: true,
+          },
         ]
       },
   // 重写url
@@ -226,7 +235,8 @@ const nextConfig = {
   publicRuntimeConfig: {
     // 这里的配置既可以服务端获取到，也可以在浏览器端获取到
     THEMES: themes
-  }
+  },
+  reactStrictMode: true
 }
 
 module.exports = process.env.ANALYZE
